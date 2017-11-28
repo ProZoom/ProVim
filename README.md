@@ -16,7 +16,7 @@ ProVim是面向c/c++、python、markdown、html/css/js开发的vim编辑器配�
   - YoucompleteMe补全c/c++,路径补全
   - Jedi补全Python
   - 实时预览markdown
-  - 支持element
+  - 支持Emmet
   - 用户片段代码
   -等等
 
