@@ -1,0 +1,121 @@
+
+
+" Environment {{{{
+
+    " Basics {{{
+        set nocompatible        " Must be first line
+        set background=dark     " Assume a dark background
+    " }}}
+
+    " Windows Compatible {{{
+        if has('win32') || has('win64')
+          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+
+          if has("multi_byte")
+            set termencoding=cp850
+            set encoding=utf-8
+            setglobal fileencoding=utf-8
+            set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
+          endif
+        endif
+    " }}}
+
+    " Setup Bundle Support {{{
+        filetype off
+
+        set rtp+=~/.vim/bundle/Vundle.vim
+        call vundle#begin()
+    " }}}
+
+" }}}}
+
+
+
+
+" Bundles {{{{
+
+    Plugin 'VundleVim/Vundle.vim'
+
+    if !exists('g:bundle_groups')
+        let g:bundle_groups=['general', 'ultisnips','c','python','web','markdown']
+
+        "let g:bundle_groups=['general','markdown']
+    endif
+
+
+    " General {{{
+        if count(g:bundle_groups, 'general')
+            Bundle 'tpope/vim-surround'
+            Bundle 'tpope/vim-repeat'
+
+            "airline插件
+            Bundle 'vim-airline/vim-airline'
+            Bundle 'vim-airline/vim-airline-themes'
+            "彩虹括号
+            Plugin 'luochen1990/rainbow'
+            "
+            Plugin 'jiangmiao/auto-pairs'
+            Plugin 'Yggdroot/indentLine'
+            "Bundle 'scrooloose/syntastic'
+
+            "file tree
+            Bundle 'scrooloose/nerdtree'
+            "comment
+            Plugin 'scrooloose/nerdcommenter'
+
+            "tagbar
+            Bundle 'majutsushi/tagbar'
+
+            "search file
+            Bundle 'ctrlpvim/ctrlp.vim'
+            Bundle 'tacahiroy/ctrlp-funky'
+
+            "Undo
+            Plugin 'mbbill/undotree'
+        endif
+    " }}}
+
+    " ultisnips {{{
+        if count(g:bundle_groups, 'ultisnips')
+            "代码片段补全
+            Bundle 'SirVer/ultisnips'
+            Bundle 'honza/vim-snippets'
+        endif
+    "}}}
+
+    "C/C++ {{{
+        if count(g:bundle_groups, 'c')
+           Plugin 'Valloric/YouCompleteMe'
+        endif
+    "}}}
+
+    "python {{{
+        if count(g:bundle_groups, 'python')
+            "python补全
+            Plugin 'davidhalter/jedi-vim'
+            Plugin 'python-mode/python-mode'
+        endif
+    "}}}
+
+  "  web  {{{
+        if count(g:bundle_groups, 'web')
+            Bundle 'mattn/emmet-vim'
+            Bundle 'gko/vim-coloresque'
+            Bundle 'tyru/open-browser.vim'
+        endif
+    " }}}
+
+    "markdown {{{
+        if count(g:bundle_groups, 'markdown')
+            Plugin 'godlygeek/tabular'
+            Plugin 'iamcco/mathjax-support-for-mkdp'
+            Plugin 'plasticboy/vim-markdown'
+            Plugin 'suan/vim-instant-markdown'
+        endif
+    "}}}
+
+
+" }}}}
+
+call vundle#end()            " required
+filetype plugin indent on    " required
